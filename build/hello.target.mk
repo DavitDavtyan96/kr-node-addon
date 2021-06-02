@@ -17,7 +17,6 @@ DEFS_Debug := \
 	'-DV8_REVERSE_JSARGS' \
 	'-DOPENSSL_NO_PINSHARED' \
 	'-DOPENSSL_THREADS' \
-	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG' \
@@ -59,8 +58,7 @@ INCS_Debug := \
 	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/openssl/openssl/include \
 	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/uv/include \
 	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/zlib \
-	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/v8/include \
-	-I/Users/ddavtyan/Sites/kr-electron/node_modules/node-addon-api
+	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=hello' \
@@ -77,7 +75,6 @@ DEFS_Release := \
 	'-DV8_REVERSE_JSARGS' \
 	'-DOPENSSL_NO_PINSHARED' \
 	'-DOPENSSL_THREADS' \
-	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
@@ -116,8 +113,7 @@ INCS_Release := \
 	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/openssl/openssl/include \
 	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/uv/include \
 	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/zlib \
-	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/v8/include \
-	-I/Users/ddavtyan/Sites/kr-electron/node_modules/node-addon-api
+	-I/Users/ddavtyan/.electron-gyp/13.0.1/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/hello.o
@@ -135,16 +131,16 @@ $(OBJS): GYP_OBJCXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_
 
 # Suffix rules, putting all outputs into $(obj).
 
-$(obj).$(TOOLSET)/$(TARGET)/%.o: $(srcdir)/%.cc FORCE_DO_CMD
-	@$(call do_cmd,cxx,1)
+$(obj).$(TOOLSET)/$(TARGET)/%.o: $(srcdir)/%.c FORCE_DO_CMD
+	@$(call do_cmd,cc,1)
 
 # Try building from generated source, too.
 
-$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj).$(TOOLSET)/%.cc FORCE_DO_CMD
-	@$(call do_cmd,cxx,1)
+$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj).$(TOOLSET)/%.c FORCE_DO_CMD
+	@$(call do_cmd,cc,1)
 
-$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
-	@$(call do_cmd,cxx,1)
+$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.c FORCE_DO_CMD
+	@$(call do_cmd,cc,1)
 
 # End of this set of suffix rules
 ### Rules for final target.
