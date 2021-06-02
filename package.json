@@ -1,28 +1,15 @@
 {
-    "main": "lib/binding.js",
-    "dependencies": {
-        "node-addon-api": "^1.1.0"
-    },
-    "scripts": {
-        "pretest": "tsc",
-        "test": "node --napi-modules ./test/test_binding.js"
-    },
-    "gypfile": true,
-    "name": "kr-node-addon",
-    "version": "1.0.0",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/krispai/kr-node-addon.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/krispai/kr-node-addon/issues"
-    },
-    "homepage": "https://github.com/krispai/kr-node-addon#readme",
-    "description": "",
-    "devDependencies": {
-        "@types/node": "^7.0.22",
-        "typescript": "^2.3.3"
-    }
+  "name": "hello_world",
+  "version": "0.0.0",
+  "description": "Node.js Addons Example #1",
+  "main": "hello.js",
+  "private": true,
+  "dependencies": {
+    "bindings": "~1.2.1",
+    "node-addon-api": "^1.0.0"
+  },
+  "scripts": {
+    "test": "node hello.js"
+  },
+  "gypfile": true
 }
